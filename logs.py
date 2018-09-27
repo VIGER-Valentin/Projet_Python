@@ -1,3 +1,7 @@
+import logging
+import time
+import sys
+
 def newFileLog(logFile, file):
     logging.basicConfig(filename=logFile,level=logging.INFO)
     logging.info(time.strftime("%d-%b-%y %H:%M:%S")+"  new file "+file+" created")
