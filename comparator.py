@@ -1,3 +1,5 @@
+from _threading_local import local
+
 import logs
 def comparator(listeNouvelle : list ,listeAncienne : list,logfile) -> None :
     print("Les fichiers supprimés sont : ",set(listeAncienne)-set(listeNouvelle))
@@ -6,6 +8,7 @@ def comparator(listeNouvelle : list ,listeAncienne : list,logfile) -> None :
         logs.newFileLog(logfile,i)
     for i in set(listeAncienne)-set(listeNouvelle):
         logs.supprFileLog(logfile,i)
+
 
 def recur(liste1 : list,liste2 : list,logfile):
     listeFichier1 = list()
@@ -27,6 +30,8 @@ def recur(liste1 : list,liste2 : list,logfile):
     for i in listeDossier1:
         for j in listeDossier2 :
             if i[0] == j[0]:
+                if i[1] != j[1]:
+                    logs.modifFolderLog(logfile,i[0],i[1])
                 recur(i[1],j[1],logfile)
                 listeDossier1.remove(i)
                 listeDossier2.remove(j)
