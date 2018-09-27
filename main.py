@@ -10,7 +10,13 @@ import parcours
 @begin.convert(refresh=int, depth=int) 
 def run(folderPath, logFile, refresh=15, depth=5): #nos arguments pour la ligne de commande
     oldList = None
-    newList = None
+    newList = None    
+    if(depth <= 0):
+        logging.error("Error, depth is negative or null")
+        return
+    if(refresh <= 0):
+        logging.error("Error, refresh is negative or null")
+        return
     if(os.path.isdir(folderPath) == True): #vérification des chemin et fichier donnés
         if(os.path.exists(logFile) == True):
             while(True):
