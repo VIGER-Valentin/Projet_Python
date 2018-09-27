@@ -14,12 +14,12 @@ def parcoursBase(rootPath) :
             if (platform.system() == 'Windows') :
                 arborescence.append(([rootPath+"\\"+folder],time.ctime(os.path.getmtime(rootPath+"\\"+folder))))
             elif (platform.system() == 'Linux') :
-                arborescence.append(([rootPath+"\\"+folder],time.ctime(os.path.getmtime(rootPath+"\\"+folder))))
+                arborescence.append(([rootPath+"/"+folder],time.ctime(os.path.getmtime(rootPath+"/"+folder))))
         for file in files :
             if (platform.system() == 'Windows') :
                 arborescence.append((rootPath+"\\"+file,time.ctime(os.path.getmtime(rootPath+"\\"+file))))
             elif (platform.system() == 'Linux') :
-                arborescence.append((rootPath+"\\"+file,time.ctime(os.path.getmtime(rootPath+"\\"+file))))
+                arborescence.append((rootPath+"/"+file,time.ctime(os.path.getmtime(rootPath+"/"+file))))
         break
 
     return arborescence
