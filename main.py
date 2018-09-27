@@ -5,7 +5,7 @@ import begin
 import time
 import os
 import parcours
-
+import comparator
 @begin.start
 @begin.convert(refresh=int, depth=int) 
 def run(folderPath, logFile, refresh=15, depth=5): #nos arguments pour la ligne de commande
@@ -29,7 +29,7 @@ def run(folderPath, logFile, refresh=15, depth=5): #nos arguments pour la ligne 
                     temp = parcours.parcoursBase(folderPath) #pareil qu'au dessus 
                     newList = parcours.parcours(temp,depth)
                     print(newList)
-                    #comparasion des listes 
+                    comparator.recur(newList,oldList,logFile)
                     oldList = newList
                     newList = None
                 time.sleep(refresh)
