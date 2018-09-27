@@ -5,14 +5,15 @@ import begin
 import time
 import os
 import parcours
-import comparator
+import comparator 
+
 @begin.start
 @begin.convert(refresh=int, depth=int) 
 def run(folderPath, logFile, refresh=15, depth=5): #nos arguments pour la ligne de commande
     oldList = None
     newList = None    
     if(depth <= 0):
-        logging.error("Error, depth is negative or null")
+        logging.error("Error, depth is negative or null") #si l'utilisateur rentre une valeur négtive ou nulle
         return
     if(refresh <= 0):
         logging.error("Error, refresh is negative or null")
@@ -24,11 +25,9 @@ def run(folderPath, logFile, refresh=15, depth=5): #nos arguments pour la ligne 
                 if(oldList == None):
                     temp = parcours.parcoursBase(folderPath) #parcours du fichier
                     oldList = parcours.parcours(temp,depth)
-                    print(oldList)
                 else:
                     temp = parcours.parcoursBase(folderPath) #pareil qu'au dessus 
                     newList = parcours.parcours(temp,depth)
-                    print(newList)
                     comparator.recur(newList,oldList,logFile)
                     oldList = newList
                     newList = None
